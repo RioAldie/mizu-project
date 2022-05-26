@@ -11,6 +11,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import Image from 'next/image';
 import MoreIcon from '@mui/icons-material/MoreVert';
 
 export default function NavBar(){
@@ -18,11 +19,13 @@ export default function NavBar(){
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
+                <Image src={"/image/logo-mizu.svg"} width={30} height={30}/>
                 <Typography
                     variant="h6"
                     noWrap
                     component="div"
                 >
+                    
                     Mizu
                 </Typography>
                 

@@ -5,8 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import StarIcon from '@mui/icons-material/Star';
-import { styled } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { styled,Rating } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import StepOrder from '../../organism/step-order';
@@ -16,7 +16,9 @@ const DivStyled = styled('div')({
     textTransform: 'none',
     display: 'flex',
     alignItems: 'center',
-    color: '#bfbfbf'
+    color: '#40BFFF',
+    fontWeight: 'bold',
+    fontSize: '20px'
 })
 const ButtonStyled = styled('Button')({
     textTransform: 'none',
@@ -49,7 +51,7 @@ export default function CardProduct(){
 
   return (
     <>
-    <Card sx={{ maxWidth: 285, marginTop: 5 }}>
+    <Card sx={{ maxWidth: 305, marginTop: 5 }}>
       <CardMedia
         component="img"
         height="220"
@@ -64,14 +66,18 @@ export default function CardProduct(){
           Natural Water from Fuji Mountain Japan
         </Typography>
       </CardContent>
-      <CardActions>
-        <DivStyled size="small">
-            <StarIcon/>Best Seller
+      <CardActions sx={{display: 'flex', justifyContent: 'center'}}>
+        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <DivStyled size="small">
+        <Rating name="half-rating-read" defaultValue={4.6} precision={0.5} readOnly />
         </DivStyled>
         <DivStyled size="small">
             Rp.5000
         </DivStyled>
+        </Box>
+        
         <Button size="medium" sx={{ml: 3, fontWeight: 'bold'}} onClick={(e)=> setOpen(true)}>
+          <ShoppingCartIcon/>
             Buy
         </Button>
       </CardActions>

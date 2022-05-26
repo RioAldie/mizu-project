@@ -5,7 +5,7 @@ import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { StepOne } from '../../molekuls/step/step';
+import { StepOne, StepTwo } from '../../molekuls/step/step';
 
 const steps = ['Isi Kelengkapan', 'Pilih Pembayaran', 'Order Success'];
 
@@ -46,7 +46,11 @@ export default function StepOrder() {
   const handleStep = (step) => () => {
     setActiveStep(step);
   };
-
+  const handleStepBox = (step) =>{
+      if(step === 0){
+          return <StepOne/>
+      }
+  }
   const handleComplete = () => {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
@@ -84,7 +88,10 @@ export default function StepOrder() {
         ) : (
           <React.Fragment>
             <Box width={450} height={400} sx={{ display: 'flex', justifyContent: 'center', flexDirection:'column', alignItems: 'center'}}>
-                <StepOne/>
+                <StepTwo/>
+                {/* {
+                    handleStepBox(activeStep)
+                } */}
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button
