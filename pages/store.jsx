@@ -8,7 +8,7 @@ import Category from './components/organism/category';
 
 const DarkTheme = createTheme({
     palette:{
-        mode: 'light',
+        mode: 'dark',
         primary: {
           main: '#002E74',
         },

@@ -1,4 +1,4 @@
-import { Grid,Box,List,ListItem, ListItemIcon,ListItemText, Typography } from "@mui/material";
+import { Grid,Box,List,ListItem, ListItemIcon,ListItemText, Typography, Button } from "@mui/material";
 import FolderIcon from '@mui/icons-material/Folder';
 import DiscountIcon from '@mui/icons-material/Discount';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
@@ -7,36 +7,44 @@ import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 
 export default function Category(){
     return(
-            <Box sx={{width: 400, height: 600, display: 'flex', flexDirection: 'column',position: 'sticky',bgcolor: 'Background.default'}}>
+            <Box sx={{width: 400, height: 600, display: 'flex', flexDirection: 'column',position: 'sticky',bgcolor: 'Background.default'}} mt={10}>
             <List >
-             
+                  <ListItem>
+                      <Button>
+                        <ListItemIcon>
+                        <WorkspacePremiumIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                        primary="Premium"/> 
+                      </Button>
+                  </ListItem>
                 <ListItem>
-                  <ListItemIcon>
-                    <WorkspacePremiumIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Premium"/>
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
+                    <Button>
+                         <ListItemIcon>
                     <DiscountIcon />
                   </ListItemIcon>
                   <ListItemText
                     primary="Discount"/>
+                    </Button>
                 </ListItem>
                 <ListItem>
-                  <ListItemIcon>
+                    <Button>
+                         <ListItemIcon>
                     <LocalFireDepartmentIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Produk Lokal"/>
+                    </ListItemIcon>
+                    <ListItemText
+                        primary="Produk Lokal"/>
+                    </Button>
                 </ListItem>
                 <ListItem>
-                  <ListItemIcon>
+                    <Button>
+                         <ListItemIcon>
                     <CardGiftcardIcon />
                   </ListItemIcon>
                   <ListItemText
                     primary="Voucher"/>
+                    </Button>
+                 
                 </ListItem>
             </List>
             </Box>

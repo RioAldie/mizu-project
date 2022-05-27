@@ -90,7 +90,7 @@ export default function CardProduct(){
             aria-describedby="modal-modal-description"
             >
                 
-            <Box width={500} height={550} bgcolor={"background.default"} color={"text.primary"} p={3} borderRadius={3} textAlign={"center"} sx={{display: 'flex',flexDirection: 'column', justifyContent:'space-evenly'}}>
+            <Box width={500} minHeight={550} bgcolor={"background.default"} color={"text.primary"} p={3} borderRadius={3} textAlign={"center"} sx={{display: 'flex',flexDirection: 'column', justifyContent:'space-evenly'}}>
                 <StepOrder/>
             </Box>
            

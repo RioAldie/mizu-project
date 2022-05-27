@@ -5,9 +5,9 @@ import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { StepOne, StepTwo } from '../../molekuls/step/step';
+import { StepOne, StepTwo,StepThree, StepDone } from '../../molekuls/step/step';
 
-const steps = ['Isi Kelengkapan', 'Pilih Pembayaran', 'Order Success'];
+const steps = ['Detail Produk', 'Data Pembeli', 'Pembayaran'];
 
 export default function StepOrder() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -48,7 +48,13 @@ export default function StepOrder() {
   };
   const handleStepBox = (step) =>{
       if(step === 0){
-          return <StepOne/>
+          return <StepTwo/>
+      }
+      if(step === 1){
+        return <StepOne/>
+      }
+      if(step === 2){
+      return <StepThree/>
       }
   }
   const handleComplete = () => {
@@ -77,21 +83,21 @@ export default function StepOrder() {
       <div>
         {allStepsCompleted() ? (
           <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleReset}>Reset</Button>
+            
+            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 ,justifyContent:'center'}}>
+             <StepDone/>
             </Box>
+            <Button sx={{ mr: 1 }}>
+                Lihat Pesanan
+              </Button>
           </React.Fragment>
         ) : (
           <React.Fragment>
             <Box width={450} height={400} sx={{ display: 'flex', justifyContent: 'center', flexDirection:'column', alignItems: 'center'}}>
-                <StepTwo/>
-                {/* {
+                
+                {
                     handleStepBox(activeStep)
-                } */}
+                }
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button
