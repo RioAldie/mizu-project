@@ -1,6 +1,9 @@
-import { Grid,Box,List,ListItem, ListItemIcon,ListItemText } from "@mui/material";
+import { Grid,Box,List,ListItem, ListItemIcon,ListItemText, Typography } from "@mui/material";
 import FolderIcon from '@mui/icons-material/Folder';
 import DiscountIcon from '@mui/icons-material/Discount';
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 
 export default function Category(){
     return(
@@ -9,12 +12,32 @@ export default function Category(){
              
                 <ListItem>
                   <ListItemIcon>
-                    <FolderIcon />
+                    <WorkspacePremiumIcon />
                   </ListItemIcon>
                   <ListItemText
-                    primary="Single-line item"/>
+                    primary="Premium"/>
                 </ListItem>
-             
+                <ListItem>
+                  <ListItemIcon>
+                    <DiscountIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Discount"/>
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <LocalFireDepartmentIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Produk Lokal"/>
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <CardGiftcardIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Voucher"/>
+                </ListItem>
             </List>
             </Box>
     )

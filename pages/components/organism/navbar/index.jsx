@@ -16,8 +16,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 
 export default function NavBar(){
     return(
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="sticky">
                 <Toolbar>
                 <Image src={"/image/logo-mizu.svg"} width={30} height={30}/>
                 <Typography
@@ -66,6 +65,5 @@ export default function NavBar(){
                 </Box>
                 </Toolbar>
             </AppBar>
-        </Box>
     )
 }

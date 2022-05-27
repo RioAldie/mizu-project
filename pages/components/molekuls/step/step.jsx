@@ -1,5 +1,6 @@
 import { Box,TextField, Typography,styled,Button, FormLabel,FormControl,Radio,RadioGroup,FormControlLabel } from "@mui/material";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export const StepOne = ()=>{
     return(
@@ -38,10 +39,34 @@ const BoxStyled = styled(Box)({
     borderRadius: '10px',
     border: '#bfbfbf solid 3px'
 })
+const DivStyled = styled('div')({
+    width: 260,
+    height: 50,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
+})
 export const StepTwo = ()=>{
+    const [quantity, setQuantity] = useState(1);
+    const [total, setTotal] = useState(10000)
+    const handlePlus = ()=>{
+        setQuantity(quantity + 1);
+    }
+    const handleMinus = ()=>{
+        if(quantity>1){
+          setQuantity(quantity - 1);  
+        }
+    }
+    const handleTotal = ()=>{
+        const price = 10000;
+        setTotal(price * quantity);
+    }
+    useEffect(()=>{
+        handleTotal();
+    },[quantity])
     return(
         <>
-            <BoxStyled sx={{ width: 400, height: 300, display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column'}}>
+            <BoxStyled sx={{ width: 400, height: 350, display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column'}}>
                 <Box sx={{ width: 400, height: 200,display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row'}}>
                     <Image src={'/image/galon-tiga.svg'} width="150" height={"150"}/>
                     <Box sx={{ width: 200, height: 150,display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column'}}>
@@ -52,12 +77,12 @@ export const StepTwo = ()=>{
                     
                 </Box>
                 <Box sx={{ width: 400, height: 100,display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row'}}>
-                 <Typography>Kuantiti : </Typography> <BoxQuantity>+</BoxQuantity> 0 <BoxQuantity>-</BoxQuantity>  
+                 <Typography>Jumlah : </Typography> <DivStyled ><BoxQuantity onClick={(e)=>handleMinus()}>-</BoxQuantity> {quantity} <BoxQuantity  onClick={(e)=>handlePlus()}>+</BoxQuantity></DivStyled>   
                 </Box>
                 <Box sx={{ width: 400, height: 100,display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row'}}>
-                 <Typography>Total :</Typography> <Typography>IDR 30.000</Typography>
+                 <Typography variant="h6">Total : </Typography> <DivStyled><Typography variant="h6">IDR {total}</Typography></DivStyled> 
                 </Box>
-                <Box>
+                <Box sx={{width: 400, height: 200}}>
                 <FormControl>
                     <FormLabel id="demo-row-radio-buttons-group-label">Pilih Pembayaran</FormLabel>
                     <RadioGroup

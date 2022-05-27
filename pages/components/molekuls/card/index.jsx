@@ -51,12 +51,13 @@ export default function CardProduct(){
 
   return (
     <>
-    <Card sx={{ maxWidth: 305, marginTop: 5 }}>
+    <Card sx={{ maxWidth: 305, marginTop: 5 }} color="secondary">
       <CardMedia
         component="img"
         height="220"
         image="/image/galon-tiga.png"
         alt="green iguana"
+        sx={{ mt: 5}}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
