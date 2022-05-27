@@ -1,4 +1,4 @@
-import { Box,AppBar,Toolbar,styled,Avatar } from "@mui/material";
+import { Box,AppBar,Toolbar,styled,Avatar, Paper, MenuList } from "@mui/material";
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -13,8 +13,11 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Image from 'next/image';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { useState } from "react";
+import { Fullscreen } from "@mui/icons-material";
 
 export default function NavBar(){
+    const [open, setOpen] = useState(false);
     return(
             <AppBar position="sticky">
                 <Toolbar>
@@ -59,11 +62,34 @@ export default function NavBar(){
                     color="inherit"
                     aria-label="open drawer"
                     sx={{ mr: 0, ml: 1 }}
+                    onClick={(e)=> setOpen(true)}
                 >
-                    <MenuIcon />
+                    <MenuIcon/>
                 </IconButton>
                 </Box>
                 </Toolbar>
+                <Paper>
+                <Menu
+                    id="demo-positioned-menu"
+                    aria-labelledby="demo-positioned-button"
+                    open={open}
+                    onClose={(e)=> setOpen(false)}
+                    anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                    }}
+                    transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                    }}
+                    sx={{width: 300}}
+                >
+                    <MenuItem >Home</MenuItem>
+                    <MenuItem >Katalog</MenuItem>
+                    <MenuItem >About</MenuItem>
+                    <MenuItem >Contact</MenuItem>
+                    </Menu>
+      </Paper>
             </AppBar>
     )
 }

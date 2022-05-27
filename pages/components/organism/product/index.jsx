@@ -6,7 +6,7 @@ export default function Product(){
     return(
         <>
         <Typography variant="h4">Product</Typography>
-        <Box sx={{ flexGrow: 1, flexWrap: 'wrap', justifyContent: 'space-evenly' }} display={'flex'} p={1}>
+        <Box sx={{ flexGrow: 1, flexWrap: 'wrap', justifyContent: 'space-evenly' }} display={'flex'} p={0}>
             <CardProduct/>
             <CardProduct/>
             <CardProduct/>

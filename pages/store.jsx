@@ -8,7 +8,7 @@ import Category from './components/organism/category';
 
 const DarkTheme = createTheme({
     palette:{
-        mode: 'dark',
+        mode: 'light',
         primary: {
           main: '#002E74',
         },
@@ -26,13 +26,13 @@ export default function Store(){
             <CssBaseline/>
                <NavBar/> 
                <Banner/>
-            <Box sx={{ flexGrow: 1}} p={5}>
+            <Box sx={{ flexGrow: 1}} p={4}>
                 <Grid container spacing={3} sx={{display: 'flex', justifyContent: 'center'}}>
                  
                     <Grid item xs={3} sx={{display:{xs: 'none', md: 'block'}}}>
                        <Category/>
                     </Grid> 
-                    <Grid item xs={9} padding={1}>
+                    <Grid item xs={9} padding={0}>
                         <Product/>
                     </Grid>
                    
