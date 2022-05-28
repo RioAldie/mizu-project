@@ -21,8 +21,6 @@ export default function Store(){
     return(
         <>
             <ThemeProvider theme={DarkTheme}>
-
-            
             <CssBaseline/>
                <NavBar/> 
                <Banner/>

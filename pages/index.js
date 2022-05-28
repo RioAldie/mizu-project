@@ -6,6 +6,10 @@ import Store from './store'
 export default function Home() {
   return (
     <>
+    <Head>
+      <title>Mizu e-commerce</title>
+      <link rel="icon" type="image/x-icon" href="/image/logo-mizu.svg"></link>
+    </Head>
       <Store/>
     </>
   )
