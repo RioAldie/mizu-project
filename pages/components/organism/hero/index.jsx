@@ -1,5 +1,4 @@
 import { Box,styled, Typography } from "@mui/material";
-import zIndex from "@mui/material/styles/zIndex";
 import Image from 'next/image';
 
 const DivStyled = styled('div')({

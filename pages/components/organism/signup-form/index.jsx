@@ -16,7 +16,7 @@ const NavBox = styled(Box)({
     alignItems: "center",
     justifyContent: "center"
 });
-const SignupForm = () =>{
+export default function SignupForm(){
     const [value, setValue] = useState('pembeli');
     const roles = [
                     {
@@ -103,5 +103,3 @@ const SignupForm = () =>{
     )
 
 }
-
-export default SignupForm;

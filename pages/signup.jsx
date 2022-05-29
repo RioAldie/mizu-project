@@ -21,7 +21,7 @@ const DarkTheme = createTheme({
             }
         }
       })
-const Signup = () =>{
+export default function Signup(){
    
    return(
        <> 
@@ -34,10 +34,10 @@ const Signup = () =>{
         <Box sx={{ flexGrow: 1}} p={0}>
                 <Grid container spacing={3} sx={{display: 'flex', justifyContent: 'center'}}>
                  
-                    <Grid item xs={4} p={0} sx={{xs :{xs: 12, md: 4}}}>
+                    <Grid item flex={1} p={0} sx={{xs :{xs: 12, md: 4},ml: {xs: 4,md:0},mt:{xs: 10,md:0}}}>
                        <SignupForm/>
                     </Grid> 
-                    <Grid item xs={8} padding={0} sx={{display:{xs: 'none', md: 'block'}}}>
+                    <Grid item flex={2} padding={0} sx={{display:{xs: 'none', md: 'block'}}}>
                         <Box>
                             <Hero/>
                         </Box>
@@ -50,5 +50,3 @@ const Signup = () =>{
    )
 
 }
-
-export default Signup;
