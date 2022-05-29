@@ -1,6 +1,7 @@
 import { PhotoCamera } from "@mui/icons-material";
 import { AppBar, Box, Button, Link, MenuItem, styled, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import Image from 'next/image';
 
 const BoxStyled = styled(Box)({
     display: 'flex',
@@ -31,8 +32,8 @@ const SignupForm = () =>{
         <Box bgcolor={"grey"} flex={0.5}  p={2} justifyContent="center" alignItems="center">
         <AppBar position="relative" color="primary">
              <NavBox>
-                <PhotoCamera/>
-                <Typography variant="h5">CStudio</Typography>
+             <Image src={"/image/logo-mizu.svg"} width={30} height={30}/>
+                <Typography variant="h5">Mizu</Typography>
               </NavBox>
         </AppBar>
       
