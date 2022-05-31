@@ -3,8 +3,10 @@ import NavBar from './components/organism/navbar';
 import Product from './components/organism/product';
 import { createTheme, PaletteMode, ThemeProvider } from "@mui/material";
 import Banner from './components/organism/banner';
+import Head from 'next/head';
 import Category from './components/organism/category';
 import ProfileContent from './components/organism/profile-content';
+import Sidebar from './components/organism/sidebar';
 
 
 const DarkTheme = createTheme({
@@ -20,6 +22,11 @@ const DarkTheme = createTheme({
   })
 export default function Profile(){
     return(
+        <>
+        <Head>
+        <title>Mizu / Yanto</title>
+        <link rel="icon" type="image/x-icon" href="/image/logo-mizu.svg"></link>
+        </Head>
         <ThemeProvider theme={DarkTheme}>
             <CssBaseline/>
                <NavBar/> 
@@ -28,7 +35,7 @@ export default function Profile(){
                     
                     <Grid item xs={3}  sx={{display:{xs: 'none', md: 'block'}}}>
                         <Box position={'fixed'}>
-                           <Category/> 
+                           <Sidebar/> 
                         </Box>
                        
                     </Grid> 
@@ -39,6 +46,7 @@ export default function Profile(){
                 </Grid>
             </Box>
            </ThemeProvider>
+           </>
     )
             
 
