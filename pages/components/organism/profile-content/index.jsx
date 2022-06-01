@@ -1,5 +1,6 @@
 
 import { Avatar, Box, Button, IconButton, Input, styled, TextField, Typography } from "@mui/material";
+import Message from "./message";
 
 const BoxStyled = styled(Box)({
     width: "100%",
@@ -55,12 +56,12 @@ export default function ProfileContent(){
             <Typography variant="h5" fontWeight={"bold"}>
                         Profile
                     </Typography>
-            <BoxDetails>
-                <BoxDetail>
+            <BoxDetails p={0} >
+                <BoxDetail sx={{display: 'flex', flexDirection: {xs: 'column', md: 'row'}}}>
                     <Typography variant="h6" fontWeight={"bold"}>
                         Username
                     </Typography>
-                    <Box sx={{ width: '50%', display: 'flex', justifyContent:'space-between'}}>
+                    <Box sx={{ width: {xs:'100%', md: '50%'}, display: 'flex', justifyContent:'space-between'}}>
                        <TextField
                     fullWidth
                     disabled
@@ -69,11 +70,11 @@ export default function ProfileContent(){
                     /> </Box>
                    
                 </BoxDetail>
-                <BoxDetail>
+                <BoxDetail sx={{display: 'flex', flexDirection: {xs: 'column', md: 'row'}}}>
                     <Typography variant="h6" fontWeight={"bold"}>
                         E-mail
                     </Typography>
-                    <Box sx={{ width: '50%', display: 'flex', justifyContent:'space-between'}}>
+                    <Box sx={{ width: {xs:'100%', md: '50%'}, display: 'flex', justifyContent:'space-between'}}>
                        <TextField
                     fullWidth
                     disabled
@@ -84,11 +85,11 @@ export default function ProfileContent(){
                     </Box>
                     
                 </BoxDetail>
-                <BoxDetail>
+                <BoxDetail sx={{display: 'flex', flexDirection: {xs: 'column', md: 'row'}}}>
                     <Typography variant="h6" fontWeight={"bold"}>
                         Password
                     </Typography>
-                    <Box sx={{ width: '50%', display: 'flex', justifyContent:'space-between'}}>
+                    <Box sx={{ width:  {xs:'100%', md: '50%'}, display: 'flex', justifyContent:'space-between'}}>
                         <TextField
                     fullWidth
                     type={'password'}
@@ -96,21 +97,6 @@ export default function ProfileContent(){
                     id="outlined-disabled"
                     label="password"
                     defaultValue="se56sgsjsjksk"
-                    />
-                    </Box>
-                    
-                </BoxDetail>
-                <BoxDetail>
-                    <Typography variant="h6" fontWeight={"bold"}>
-                        Title
-                    </Typography>
-                    <Box sx={{ width: '50%', display: 'flex', justifyContent:'space-between'}}>
-                        <TextField
-                    fullWidth
-                    id="outlined-required"
-                    label="title"
-                    defaultValue="Reptiled Master"
-                    
                     />
                     </Box>
                     
@@ -124,7 +110,7 @@ export default function ProfileContent(){
                 </BoxDetail>
                 
             </BoxDetails>
-         
+            
             
         </Box>
     )

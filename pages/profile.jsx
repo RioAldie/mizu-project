@@ -7,6 +7,7 @@ import Head from 'next/head';
 import Category from './components/organism/category';
 import ProfileContent from './components/organism/profile-content';
 import Sidebar from './components/organism/sidebar';
+import Message from './components/organism/profile-content/message';
 
 
 const DarkTheme = createTheme({
@@ -41,6 +42,7 @@ export default function Profile(){
                     </Grid> 
                     <Grid item xs={9} padding={0}>
                         <ProfileContent/>
+                        <Message/>
                     </Grid>
                    
                 </Grid>
