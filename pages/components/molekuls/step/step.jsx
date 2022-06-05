@@ -59,7 +59,7 @@ export const StepTwo = ()=>{
     }
     const handleTotal = ()=>{
         const price = 10000;
-        setTotal(price * quantity);
+        return setTotal(price * quantity);
     }
     useEffect(()=>{
         handleTotal();

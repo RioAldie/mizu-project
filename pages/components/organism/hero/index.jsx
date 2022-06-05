@@ -24,13 +24,13 @@ const SpanStyled = styled(Typography)({
 const ThumbBox = styled('div')({
     display: 'flex',
     position: 'absolute'
-})
+});
 export default function Hero(){
     return (
         <>
             <Box sx={{display:'flex',alignItems:'center', justifyContent:'space-evenly',flexDirection: 'column', height:'100vh'}}>
                 <Box sx={{display:'flex', flexDirection:'row'}}>
-                    <Typography variant="h2" color={'#002E74'}>Mizu Save Your  '</Typography><Typography variant="h2" color={'#0167FF'}> Smile :)</Typography>
+                    <Typography variant="h2" color={'#002E74'}>Mizu Save Your &apos;re</Typography><Typography variant="h2" color={'#0167FF'}> Smile :)</Typography>
                 </Box>
                 <Box sx={{ height:500}}>
                     <Image src={"/image/thum-1.png"} width={400} height={400}/>
