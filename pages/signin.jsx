@@ -24,7 +24,7 @@ export default function Signin (){
         </Head>
        <ThemeProvider theme={DarkTheme}>
         <CssBaseline/>
-            <Box>
+            <Box sx={{display:{xs:'block',md:'flex'}, justifyContent:'center', alignItems:'center'}}>
                 <SigninForm/>
             </Box>
        </ThemeProvider>

@@ -1,7 +1,8 @@
 import { PhotoCamera } from "@mui/icons-material";
-import { AppBar, Box, Button, Link, MenuItem, styled, TextField, Typography } from "@mui/material";
+import { AppBar, Box, Button, MenuItem, styled, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import Image from 'next/image';
+import Link from 'next/link';
 
 const BoxStyled = styled(Box)({
     display: 'flex',
@@ -18,7 +19,7 @@ const NavBox = styled(Box)({
 });
 export default function SigninForm(){
     return(
-        <Box bgcolor={"grey"} flex={0.5}  p={2} justifyContent="center" alignItems="center" sx={{mt: 10}}>
+        <Box bgcolor={"grey"} flex={0.5}  p={2} justifyContent="center" alignItems="center" alignSelf={'center'} sx={{mt: 10,width:{md: 900}}}>
         <AppBar position="relative" color="primary">
              <NavBox>
              <Image src={"/image/logo-mizu.svg"} width={30} height={30}/>
@@ -48,11 +49,11 @@ export default function SigninForm(){
 
              
             
-            <Button fullWidth size="large" variant="contained" color="primary">Masuk</Button>
+            <Link href={'/store'}><Button fullWidth size="large" variant="contained" color="primary">Masuk</Button></Link>
             <Typography variant="subtitle1">Didnt Have an Account? 
-            <Link href="/signup" underline="none">
-            {' Daftar disini'}
+            <Link href="/signup" underline="none">{' Daftar disini'}
             </Link>
+            
             </Typography>
            
         </BoxStyled>

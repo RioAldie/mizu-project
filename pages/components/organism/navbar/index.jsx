@@ -15,12 +15,14 @@ import Image from 'next/image';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useState } from "react";
 import { Fullscreen } from "@mui/icons-material";
+import Link from 'next/link'
 
 export default function NavBar(){
     const [open, setOpen] = useState(false);
     return(
             <AppBar position="sticky">
                 <Toolbar>
+                <Link href='/store'><a><Box sx={{display:'flex', flexDirection:'row'}}>
                 <Image src={"/image/logo-mizu.svg"} width={30} height={30}/>
                 <Typography
                     variant="h6"
@@ -29,8 +31,8 @@ export default function NavBar(){
                 >
                     
                     Mizu
-                </Typography>
-                
+                </Typography></Box>
+                </a></Link>
                 <Box sx={{ flexGrow: 1 }} />
                 <Box>
                     <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -48,13 +50,14 @@ export default function NavBar(){
                     </Badge>
                     </IconButton>
                 </Box>
+                <Link href="/profile"><a >
                 <Button variant="contained" sx={{ml: 2, display:{ xs: 'none', md: 'flex'}}}  >
                     <Avatar alt="Remy Sharp" sx={{ width: 34, height: 34 }} src="/image/avatar-2.png" />
                     <Typography sx={{ml: 2}}>
                       Yanto  
                     </Typography>
                 </Button>
-
+                </a></Link>
                 <Box sx={{ display:{ xs: 'block', md: 'none'}}}>
                 <IconButton
                     size="large"

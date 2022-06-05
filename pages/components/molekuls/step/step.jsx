@@ -83,18 +83,7 @@ export const StepTwo = ()=>{
                  <Typography variant="h6">Total : </Typography> <DivStyled><Typography variant="h6">IDR {total}</Typography></DivStyled> 
                 </Box>
                 <Box sx={{width: 400, height: 200}}>
-                <FormControl>
-                    <FormLabel id="demo-row-radio-buttons-group-label">Pilih Pembayaran</FormLabel>
-                    <RadioGroup
-                        row
-                        aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group"
-                    >
-                        <FormControlLabel value="female" control={<Radio />} label="Dana" />
-                        <FormControlLabel value="male" control={<Radio />} label="Gopay" />
-                        <FormControlLabel value="other" control={<Radio />} label="Ovo" />
-                    </RadioGroup>
-                    </FormControl>
+                
                 </Box>
             </BoxStyled>
         </>

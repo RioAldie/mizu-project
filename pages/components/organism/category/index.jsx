@@ -36,7 +36,7 @@ export default function Category(){
                     <LocalFireDepartmentIcon />
                     </ListItemIcon>
                     <ListItemText
-                        primary="Produk Lokal"/>
+                        primary="Hot Terlaris"/>
                     </Button>
                 </ListItem>
                 <ListItem>

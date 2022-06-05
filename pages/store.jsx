@@ -4,6 +4,7 @@ import Product from './components/organism/product';
 import { createTheme, PaletteMode, ThemeProvider } from "@mui/material";
 import Banner from './components/organism/banner';
 import Category from './components/organism/category';
+import Head from 'next/head';
 
 
 const DarkTheme = createTheme({
@@ -19,7 +20,10 @@ const DarkTheme = createTheme({
   })
 export default function Store(){
     return(
-        <>
+        <><Head>
+        <title>Mizu e-commerce</title>
+        <link rel="icon" type="image/x-icon" href="/image/logo-mizu.svg"></link>
+        </Head>
             <ThemeProvider theme={DarkTheme}>
             <CssBaseline/>
                <NavBar/> 
