@@ -5,10 +5,11 @@ import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import StepTwo from '../../molekuls/step/steptwo';
-import StepOne from '../../molekuls/step/stepone';
-import StepThree from '../../molekuls/step/stepthree';
+import StepTwo from '../../molekuls/steptwo';
+import StepOne from '../../molekuls/stepone';
+import StepThree from '../../molekuls/stepthree';
 import StepDone from '../../molekuls/step';
+
 
 
 const steps = ['Detail Produk', 'Data Pembeli', 'Pembayaran'];
