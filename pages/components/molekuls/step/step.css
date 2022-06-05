@@ -1,7 +1,0 @@
-.box{
-    display: flex;
-    flex-direction: row;
-    width: 200px;
-    height: max-content;
-    justify-content: center;
-}
