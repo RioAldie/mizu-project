@@ -9,11 +9,24 @@ import StepTwo from '../../molekuls/steptwo';
 import StepOne from '../../molekuls/stepone';
 import StepThree from '../../molekuls/stepthree';
 import StepDone from '../../molekuls/step';
+import { styled } from '@mui/system';
+import { useState,useEffect } from 'react';
+
 
 
 
 const steps = ['Detail Produk', 'Data Pembeli', 'Pembayaran'];
-
+const BoxStyled = styled(Box)({
+  borderRadius: '10px',
+  border: '#bfbfbf solid 3px'
+});
+const DivStyled = styled('div')({
+  width: 260,
+  height: 50,
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-evenly'
+})
 export default function StepOrder() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});

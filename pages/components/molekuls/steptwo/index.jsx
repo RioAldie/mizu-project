@@ -1,5 +1,26 @@
 import { Box,TextField, Typography,styled,Button, FormLabel,FormControl,Radio,RadioGroup,FormControlLabel } from "@mui/material";
 import Image from "next/image";
+import { useState,useEffect } from "react";
+const BoxStyled = styled(Box)({
+    borderRadius: '10px',
+    border: '#bfbfbf solid 3px'
+})
+const DivStyled = styled('div')({
+    width: 260,
+    height: 50,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
+})
+const BoxQuantity = styled(Button)({
+    width: 25,
+    height: 25,
+    display: 'flex',
+    backgroundColor: 'primary',
+    alignItems: 'center',
+    justifyContent: 'center'
+    
+})
 const StepTwo = ()=>{
     const [quantity, setQuantity] = useState(1);
     const [total, setTotal] = useState(10000)

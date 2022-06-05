@@ -6,45 +6,18 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { styled,Rating } from '@mui/material';
+import { Rating } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import StepOrder from '../../organism/step-order';
+import { styled } from '@mui/system';
 
-
-const DivStyled = styled('div')({
-    textTransform: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    color: '#40BFFF',
-    fontWeight: 'bold',
-    fontSize: '20px'
-})
-const ButtonStyled = styled('Button')({
-    textTransform: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    border: 'none',
-    fontSize: '20px',
-    fontWeight: 'bold',
-    backgroundColor: '#00003'
-});
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-const StyledModal = styled(Modal)({
+const ModalStyled = styled(Modal)({
   display: 'flex',
-  alignItems:'center',
-  justifyContent: 'center'
-});
+  alignItems: 'center',
+  justifyContent: 'center',
+})
+
 
 export default function CardProduct(){
   const [open, setOpen] = React.useState(false);
@@ -61,7 +34,7 @@ export default function CardProduct(){
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          fujion
+          fujion nomu
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Natural Water from Fuji Mountain Japan
@@ -69,12 +42,12 @@ export default function CardProduct(){
       </CardContent>
       <CardActions sx={{display: 'flex', justifyContent: 'center'}}>
         <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-          <DivStyled size="small">
+          <Box size="small">
         <Rating name="half-rating-read" defaultValue={4.6} precision={0.5} readOnly />
-        </DivStyled>
-        <DivStyled size="small">
+        </Box>
+        <Box size="small">
             Rp.5000
-        </DivStyled>
+        </Box>
         </Box>
         
         <Button size="medium" sx={{ml: 3, fontWeight: 'bold'}} onClick={(e)=> setOpen(true)}>
@@ -83,7 +56,7 @@ export default function CardProduct(){
         </Button>
       </CardActions>
     </Card>
-    <StyledModal
+    <ModalStyled
             open={open}
             onClose={(e) => setOpen(false)}
             aria-labelledby="modal-modal-title"
@@ -94,7 +67,7 @@ export default function CardProduct(){
                 <StepOrder/>
             </Box>
            
-        </StyledModal>
+        </ModalStyled>
     </>
   );
 }
