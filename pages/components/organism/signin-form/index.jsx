@@ -20,7 +20,7 @@ const NavBox = styled(Box)({
 export default function SigninForm(){
     return(
         <Box bgcolor={"grey"} flex={0.5}  p={2} justifyContent="center" alignItems="center" alignSelf={'center'} sx={{mt: 10,width:{md: 900}}}>
-        <AppBar position="relative" color="primary">
+        <AppBar position="relative" color="primary" sx={{height: 50, display: 'flex', alignItems: 'center',justifyContent:'center'}}>
              <NavBox>
              <Image src={"/image/logo-mizu.svg"} width={30} height={30}/>
                 <Typography variant="h5">Mizu</Typography>
