@@ -5,6 +5,9 @@ import { createTheme, PaletteMode, ThemeProvider } from "@mui/material";
 import Banner from './components/organism/banner';
 import Category from './components/organism/category';
 import Head from 'next/head';
+import { useContext, useEffect } from 'react';
+import { AuthCtx } from './context/AuthContex';
+import { useRouter } from 'next/router';
 
 
 const DarkTheme = createTheme({
@@ -19,6 +22,14 @@ const DarkTheme = createTheme({
     }
   })
 export default function Store(){
+    const {isLogin} = useContext(AuthCtx);
+    const router = useRouter()
+    const handleAuth = () =>{
+        return (isLogin ? false : router.push('/'));
+    }
+    useEffect(()=>{
+        handleAuth();
+    },[isLogin]);
     return(
         <><Head>
         <title>Mizu e-commerce</title>
