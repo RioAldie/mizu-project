@@ -6,18 +6,15 @@ import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY,
-  authDomain: "cstudio-476b5.firebaseapp.com",
-  projectId: "cstudio-476b5",
-  storageBucket: "cstudio-476b5.appspot.com",
-  messagingSenderId: "568388001743",
-  appId: "1:568388001743:web:1257f432648317c3083cba",
-  measurementId: "G-8HL88773M8"
-};
+    apiKey: "AIzaSyBsOgv6u5DPJf4odfRSRKJurwIR8TOTfqo",
+    authDomain: "mizu-server.firebaseapp.com",
+    projectId: "mizu-server",
+    storageBucket: "mizu-server.appspot.com",
+    messagingSenderId: "1043057838429",
+    appId: "1:1043057838429:web:73d154315b2d94092680b4"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-const analytics = getAnalytics(app);
 export const auth = getAuth();
-export const storage = getStorage(app);

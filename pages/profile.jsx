@@ -8,7 +8,9 @@ import Category from './components/organism/category';
 import ProfileContent from './components/organism/profile-content';
 import Sidebar from './components/organism/sidebar';
 import Message from './components/organism/profile-content/message';
-
+import { useContext, useEffect } from 'react';
+import { AuthCtx } from './context/AuthContex';
+import { useRouter } from 'next/router';
 
 const DarkTheme = createTheme({
     palette:{
@@ -22,6 +24,14 @@ const DarkTheme = createTheme({
     }
   })
 export default function Profile(){
+    const {isLogin} = useContext(AuthCtx);
+    const router = useRouter()
+    const handleAuth = () =>{
+        return (isLogin ? false : router.push('/'));
+    }
+    useEffect(()=>{
+        handleAuth();
+    },[isLogin]);
     return(
         <>
         <Head>

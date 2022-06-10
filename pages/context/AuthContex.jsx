@@ -2,7 +2,7 @@ import React, { createContext, ReactNode, useContext, useEffect, useReducer, use
 
 
 const AuthCtxdeafultvalue = {
-    isLogin: true,
+    isLogin: false,
     setIslogin: state => {}
 }
 export const AuthCtx = createContext(AuthCtxdeafultvalue);
@@ -10,12 +10,15 @@ export const AuthCtx = createContext(AuthCtxdeafultvalue);
 const AuthContextProvider = ({children}) =>{
     const [isLogin, setIslogin] = useState(AuthCtxdeafultvalue.isLogin);
     // const CurrentUserLclStorage = localStorage.getItem("user");
-    // useEffect(()=>{
-        
-    //     if(CurrentUserLclStorage != null){
-    //         setIslogin(true);
-    //     }
-    // },[CurrentUserLclStorage,setIslogin])
+    useEffect(()=>{
+        if (typeof window !== 'undefined') {
+            // Perform localStorage action
+            const item = localStorage.getItem('user')
+            if(item != null){
+                setIslogin(true);
+            }
+          }
+    },[isLogin,setIslogin])
     return(
         <AuthCtx.Provider value={{isLogin, setIslogin}}>
             {children}

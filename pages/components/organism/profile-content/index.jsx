@@ -43,7 +43,7 @@ export default function ProfileContent(){
     return(
         <Box flex={3}  height={1000}>
             <BoxStyled sx={{display: 'flex', flexDirection: 'column'}}>
-            <Avatar alt="Remy Sharp" src={'/image/avtar-2.png'} 
+            <Avatar alt="Remy Sharp" src={'/image/avatar-2.png'} 
             sx={{ width: 150, height: 150 }}
             />
                     <Typography variant="h6" fontWeight={"normal"}>
