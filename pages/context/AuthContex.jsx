@@ -13,9 +13,12 @@ const AuthContextProvider = ({children}) =>{
     useEffect(()=>{
         if (typeof window !== 'undefined') {
             // Perform localStorage action
+            console.log(isLogin)
             const item = localStorage.getItem('user')
             if(item != null){
+                console.log('login berhasil')
                 setIslogin(true);
+                console.log(isLogin)
             }
           }
     },[isLogin,setIslogin])

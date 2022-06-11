@@ -2,13 +2,17 @@ import { PhotoCamera } from "@mui/icons-material";
 import { AppBar, Box, Button, Link, MenuItem, styled, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import Image from 'next/image';
+import { addDoc, collection,setDoc,doc } from "firebase/firestore";
+import { auth,db } from "../../../firebase/firebase";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { async } from "@firebase/util";
 
 const BoxStyled = styled(Box)({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    height: 700,
+    minHeight: 700,
 });
 const NavBox = styled(Box)({
     display: "flex",
@@ -17,17 +21,58 @@ const NavBox = styled(Box)({
     justifyContent: "center"
 });
 export default function SignupForm(){
-    const [value, setValue] = useState('pembeli');
-    const roles = [
-                    {
-                        role: 'pembeli',
-                        label: 'Pembeli'
-                    },
-                    {
-                        role: 'penjual',
-                        label: 'Penjual'
-
-                }]
+    const [ username, setUsername ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ phone, setPhone] = useState('');
+    const [ adress, setAdress ] = useState('');
+    const [ data,setData ] = useState({});
+  
+    const handleSignup = ()=>{
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in
+            
+            const user = userCredential.user;
+            // ...
+            const userid = user.uid;
+            console.log(userid, 'signup success');
+            handleSetData(userid);
+            
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+        });
+    }
+    const handleSetData =(uid)=>{
+       const getData = {
+        username: username,
+        password: password,
+        email: email,
+        phone: phone,
+        adress: adress 
+       }
+       setTimeout(()=>{
+        handlePostData(uid,getData);
+    },[500]);
+       
+    }
+    useEffect(()=>{
+        console.log(data);
+    },[setData,data])
+    const handlePostData = async (uid,data) =>{
+        console.log('datas: ' ,data)
+        try {
+            const res =  await setDoc(doc(db, "users",uid), {
+                ...data
+            })
+            console.log("berhasil menambahkan collection");
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+    }
     return(
         <Box bgcolor={"grey"} flex={0.5}  p={2} justifyContent="center" alignItems="center">
         <AppBar position="relative" color="primary">
@@ -41,23 +86,22 @@ export default function SignupForm(){
         <Typography variant="h5" color={"primary"}>
                 Register
             </Typography>
-            <Box  width={400} sx={{ maxWidth: 545,display: 'flex', justifyContent: 'space-between'}}>
-                <TextField 
-                id="firtsname" 
-                label="Firstname" 
-                variant="outlined" sx={{width: 190}} />
-                <TextField 
-                id="lastname" 
-                label="Lastname" 
-                variant="outlined"sx={{width: 190}} />
-            </Box>
-             
+           
+            <TextField 
+            fullWidth
+            id="username" 
+            label="Username" 
+            type="username"
+            variant="outlined"
+            onChange={(e) => setUsername(e.target.value)} />
             <TextField 
             fullWidth
             id="email" 
             label="Email" 
             type="email"
-            variant="outlined" />
+            variant="outlined"
+            onChange={(e) => setEmail(e.target.value)}
+            />
             <TextField
             fullWidth
             id="outlined-basic"
@@ -65,6 +109,7 @@ export default function SignupForm(){
             type="password"
             autoComplete="current-password"
             variant="outlined"
+            onChange={(e) => setPassword(e.target.value)}
             />
             <TextField
             fullWidth
@@ -73,24 +118,19 @@ export default function SignupForm(){
             type="phone"
             autoComplete="current-password"
             variant="outlined"
+            onChange={(e) => setPhone(e.target.value)}
             />
-             <TextField
-             fullWidth
-            id="role"
-            select
-            label="Role"
-            value={value}
-            onChange= {(e)=> setValue(e.target.value)}
-            helperText="Please select your role"
-            >
-               {roles.map((role) => (
-                    <MenuItem color="grey" key={role.role} value={role.role}>
-                    {role.label}
-                    </MenuItem>
-                ))}
-             
-            </TextField>
-            <Button fullWidth size="large" variant="contained" color="primary">Sign Up</Button>
+              <TextField
+              fullWidth
+          id="standard-multiline-static"
+          label="Alamat"
+          multiline
+          rows={4}
+          variant="outlined"
+          onChange={(e) => setAdress(e.target.value)}
+        />
+          
+            <Button fullWidth size="large" variant="contained" color="primary" onClick={() => handleSignup()}>Sign Up</Button>
             <Typography variant="subtitle1">Have an Account? 
             <Link href="#" underline="none">
             {' Sign In'}

@@ -10,11 +10,16 @@ import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import LogoutIcon from '@mui/icons-material/Logout';
 import QuizIcon from '@mui/icons-material/Quiz';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { useContext } from "react";
+import { AuthCtx } from "../../../context/AuthContex";
 
-const ButtonStyled = styled(Button)({
-  color: 'secondary'
-})
+
 export default function Sidebar(){
+  const {isLogin,setIslogin} = useContext(AuthCtx);
+  const handleLogout = ()=>{
+    localStorage.removeItem('user');
+    setIslogin(false)
+  }
     return(
             <Box sx={{width: 400, height: 600, display: 'flex', flexDirection: 'column',position: 'sticky',bgcolor: 'Background.default'}} mt={10}>
             <List >
@@ -64,7 +69,7 @@ export default function Sidebar(){
                     </Button>
                 </ListItem>
                 <ListItem>
-                    <Button sx={{color: 'red'}}>
+                    <Button sx={{color: 'red'}} onClick={()=> handleLogout()}>
                          <ListItemIcon>
                     <LogoutIcon sx={{color: 'red'}}/>
                   </ListItemIcon>

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Link from 'next/link';
 import { auth } from "../../../firebase/firebase";
+import { useRouter } from 'next/router';
 
 const BoxStyled = styled(Box)({
     display: 'flex',
@@ -24,6 +25,7 @@ export default function SigninForm(){
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ adress, setAdress ] = useState('');
+    const {router} = useRouter();
     const handleLogin = ()=>{
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -37,6 +39,7 @@ export default function SigninForm(){
             console.log(userf)
             console.log('login success')
             setLocalStr(userf);
+            router.push('/store')
             
         })
         .catch((error) => {
