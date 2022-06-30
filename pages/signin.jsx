@@ -5,6 +5,7 @@ import Hero from "./components/organism/hero";
 import SigninForm from './components/organism/signin-form';
 import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { AuthCtx } from './context/AuthContex';
 
 const DarkTheme = createTheme({
     palette:{
@@ -19,7 +20,7 @@ const DarkTheme = createTheme({
   })
 export default function Signin (){
     const {isLogin} = useContext(AuthCtx);
-    const router = useRouter()
+    const router = useRouter();
     const handleAuth =async () =>{
         const user = await JSON.parse(localStorage.getItem('user'))
 
