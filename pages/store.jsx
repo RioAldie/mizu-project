@@ -65,8 +65,8 @@ export default function Store(){
     
     
  }
-    const handleAuth =async () =>{
-        const user = await JSON.parse(localStorage.getItem('user'))
+    const handleAuth = () =>{
+        const user = JSON.parse(localStorage.getItem('user'))
         console.log(isLogin)
        if(isLogin != true){
         console.log(isLogin);
