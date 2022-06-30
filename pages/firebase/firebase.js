@@ -19,3 +19,7 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth();
 export const storage = getStorage(app);
+const none = ()=>{
+  return ''
+};
+export default none;

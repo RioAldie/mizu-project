@@ -18,6 +18,7 @@ export default function Sidebar(){
   const {isLogin,setIslogin} = useContext(AuthCtx);
   const handleLogout = ()=>{
     localStorage.removeItem('user');
+    localStorage.clear();
     setIslogin(false)
   }
     return(
@@ -33,36 +34,36 @@ export default function Sidebar(){
                       </Button>
                   </ListItem>
                   <ListItem>
-                      <Button sx={{color: 'gray'}}>
+                      <Button sx={{color: '#002E74'}}>
                         <ListItemIcon>
-                        <EmailIcon />
+                        <EmailIcon sx={{color: '#002E74'}} />
                         </ListItemIcon>
                         <ListItemText
                         primary="Pesan"/> 
                       </Button>
                   </ListItem>
                 <ListItem>
-                    <Button sx={{color: 'gray'}}>
+                    <Button sx={{color: '#002E74'}}>
                          <ListItemIcon>
-                    <LocalShippingIcon />
+                    <LocalShippingIcon sx={{color: '#002E74'}} />
                   </ListItemIcon>
                   <ListItemText
                     primary="Barang Dikirim"/>
                     </Button>
                 </ListItem>
                 <ListItem>
-                    <Button sx={{color: 'gray'}}>
+                    <Button sx={{color: '#002E74'}}>
                          <ListItemIcon>
-                    <WorkHistoryIcon />
+                    <WorkHistoryIcon sx={{color: '#002E74'}} />
                     </ListItemIcon>
                     <ListItemText
                         primary="riwayat order"/>
                     </Button>
                 </ListItem>
                 <ListItem>
-                    <Button sx={{color: 'gray'}}>
+                    <Button sx={{color: '#002E74'}}>
                          <ListItemIcon>
-                    <QuizIcon />
+                    <QuizIcon sx={{color: '#002E74'}} />
                   </ListItemIcon>
                   <ListItemText
                     primary="Customer Service"/>

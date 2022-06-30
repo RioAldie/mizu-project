@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import StepOrder from '../../organism/step-order';
 import { styled } from '@mui/system';
+import { useEffect } from 'react';
 
 const ModalStyled = styled(Modal)({
   display: 'flex',
@@ -19,12 +20,13 @@ const ModalStyled = styled(Modal)({
 })
 
 
-export default function CardProduct(){
+export default function CardProduct(props){
   const [open, setOpen] = React.useState(false);
-
+  const {title,body,price,category,img,id} = props;
+  
   return (
     <>
-    <Card sx={{ maxWidth: 305, marginTop: 5 }} color="secondary">
+    <Card sx={{ maxWidth: 305, marginTop: 5,cursor:'pointer'}} color="secondary">
       <CardMedia
         component="img"
         height="220"
@@ -34,10 +36,10 @@ export default function CardProduct(){
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          fujion nomu
+          {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Natural Water from Fuji Mountain Japan
+          {body}
         </Typography>
       </CardContent>
       <CardActions sx={{display: 'flex', justifyContent: 'center'}}>
@@ -46,7 +48,10 @@ export default function CardProduct(){
         <Rating name="half-rating-read" defaultValue={4.6} precision={0.5} readOnly />
         </Box>
         <Box size="small">
-            Rp.5000
+          <Typography sx={{fontSize:'18px',color:'#40BFFF'}}>
+              Rp.{price}
+          </Typography>
+            
         </Box>
         </Box>
         
@@ -64,7 +69,7 @@ export default function CardProduct(){
             >
                 
             <Box width={500} minHeight={550} bgcolor={"background.default"} color={"text.primary"} p={3} borderRadius={3} textAlign={"center"} sx={{display: 'flex',flexDirection: 'column', justifyContent:'space-evenly'}}>
-                <StepOrder/>
+                <StepOrder title={title} body={body} price={price} category={category} id={id}/>
             </Box>
            
         </ModalStyled>

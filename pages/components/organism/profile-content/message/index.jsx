@@ -20,7 +20,7 @@ export default function Message(){
     return(
         <> 
              
-            <BoxStyled sx={{display: 'flex', flexDirection: 'column',mt: 20,height:{xs: 1100, md: 900}}}>
+            <BoxStyled sx={{display: 'flex', flexDirection: 'column',height:{xs: 1100, md: 900}}}>
             <Box sx={{height: 0}}>
                     <Typography variant="h5" fontWeight={"bold"}>
                         Pesan

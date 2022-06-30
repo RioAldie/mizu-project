@@ -6,6 +6,7 @@ import { addDoc, collection,setDoc,doc } from "firebase/firestore";
 import { auth,db } from "../../../firebase/firebase";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { async } from "@firebase/util";
+import { useRouter } from "next/router";
 
 const BoxStyled = styled(Box)({
     display: 'flex',
@@ -27,6 +28,7 @@ export default function SignupForm(){
     const [ phone, setPhone] = useState('');
     const [ adress, setAdress ] = useState('');
     const [ data,setData ] = useState({});
+    const router = useRouter()
   
     const handleSignup = ()=>{
         createUserWithEmailAndPassword(auth, email, password)
@@ -38,7 +40,7 @@ export default function SignupForm(){
             const userid = user.uid;
             console.log(userid, 'signup success');
             handleSetData(userid);
-            
+            router.push('/')
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -52,7 +54,8 @@ export default function SignupForm(){
         password: password,
         email: email,
         phone: phone,
-        adress: adress 
+        adress: adress,
+        uid: uid 
        }
        setTimeout(()=>{
         handlePostData(uid,getData);
@@ -132,8 +135,7 @@ export default function SignupForm(){
           
             <Button fullWidth size="large" variant="contained" color="primary" onClick={() => handleSignup()}>Sign Up</Button>
             <Typography variant="subtitle1">Have an Account? 
-            <Link href="#" underline="none">
-            {' Sign In'}
+            <Link href="/signin" underline="none">{'Signin here'}
             </Link>
             </Typography>
            

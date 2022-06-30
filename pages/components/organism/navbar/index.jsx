@@ -15,10 +15,22 @@ import Image from 'next/image';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useState } from "react";
 import { Fullscreen } from "@mui/icons-material";
-import Link from 'next/link'
+import Link from 'next/link';
+import { useEffect } from "react";
 
 export default function NavBar(){
     const [open, setOpen] = useState(false);
+    const [username, setUsername ] = useState('');
+    const [image, setImage] = useState('');
+    useEffect(()=>{
+        const dataUser =JSON.parse(localStorage.getItem('userdata')) || '';
+        if(dataUser != null){
+             setUsername(dataUser.username);
+             setImage(dataUser.image);
+        }
+       
+       
+    })
     return(
             <AppBar position="sticky">
                 <Toolbar>
@@ -52,9 +64,9 @@ export default function NavBar(){
                 </Box>
                 <Link href="/profile"><a >
                 <Button variant="contained" sx={{ml: 2, display:{ xs: 'none', md: 'flex'}}}  >
-                    <Avatar alt="Remy Sharp" sx={{ width: 34, height: 34 }} src="/image/avatar-2.png" />
+                    <Avatar alt="Remy Sharp" sx={{ width: 34, height: 34 }} src={`/image/${image}`} />
                     <Typography sx={{ml: 2}}>
-                      Yanto  
+                       {username}
                     </Typography>
                 </Button>
                 </a></Link>
