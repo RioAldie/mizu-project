@@ -3,6 +3,8 @@ import Head from 'next/head';
 import SignupForm from "./components/organism/signup-form";
 import Hero from "./components/organism/hero";
 import SigninForm from './components/organism/signin-form';
+import { useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const DarkTheme = createTheme({
     palette:{
@@ -16,6 +18,27 @@ const DarkTheme = createTheme({
     }
   })
 export default function Signin (){
+    const {isLogin} = useContext(AuthCtx);
+    const router = useRouter()
+    const handleAuth =async () =>{
+        const user = await JSON.parse(localStorage.getItem('user'))
+
+       if(isLogin == true){
+            return router.push('/store');
+        }
+        if(user != null){
+            return router.push('/store');
+        } 
+       
+      
+       return null;
+    }
+    useEffect(()=>{
+        setTimeout(()=>{
+           handleAuth(); 
+        },[500])
+        
+    },[isLogin]);
     return(
         <>
             <Head>
