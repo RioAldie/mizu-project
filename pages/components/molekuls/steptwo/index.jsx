@@ -21,9 +21,10 @@ const BoxQuantity = styled(Button)({
     justifyContent: 'center'
     
 })
-const StepTwo = ()=>{
+const StepTwo = (props)=>{
     const [quantity, setQuantity] = useState(1);
-    const [total, setTotal] = useState(10000)
+    const [total, setTotal] = useState(1);
+    const {title,price,category,setTotalPrice} = props;
     const handlePlus = ()=>{
         setQuantity(quantity + 1);
     }
@@ -33,8 +34,9 @@ const StepTwo = ()=>{
         }
     }
     const handleTotal = ()=>{
-        const price = 10000;
-        return setTotal(price * quantity);
+        const totalPrice = price * quantity
+        setTotal(price * quantity);
+        setTotalPrice(totalPrice)
     }
     useEffect(()=>{
         handleTotal();
@@ -45,16 +47,16 @@ const StepTwo = ()=>{
                 <Box sx={{ width: 400, height: 200,display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row'}}>
                     <Image src={'/image/galon-tiga.svg'} width="150" height={"150"}/>
                     <Box sx={{ width: 200, height: 150,display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column'}}>
-                        <Typography>fujion</Typography>
-                        <Typography>IDR. 10.000</Typography>
-                        <Typography>Premium</Typography>
+                        <Typography sx={{fontWeight:'bold'}}>{title}</Typography>
+                        <Typography>Rp.{price}</Typography>
+                        <Typography sx={{color:'red'}}>{category}</Typography>
                     </Box>
                     
                 </Box>
                 <Box sx={{ width: 400, height: 100,display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row'}}>
                  <Typography>Jumlah : </Typography> <DivStyled ><BoxQuantity onClick={(e)=>handleMinus()}>-</BoxQuantity> {quantity} <BoxQuantity  onClick={(e)=>handlePlus()}>+</BoxQuantity></DivStyled>   
                 </Box>
-                <Box sx={{ width: 400, height: 100,display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row'}}>
+                <Box sx={{ width: 400, height: 100,display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row',color:'#40BFFF'}}>
                  <Typography variant="h6">Total : </Typography> <DivStyled><Typography variant="h6">IDR {total}</Typography></DivStyled> 
                 </Box>
                 <Box sx={{width: 400, height: 200}}>

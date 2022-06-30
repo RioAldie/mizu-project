@@ -11,6 +11,10 @@ import StepThree from '../../molekuls/stepthree';
 import StepDone from '../../molekuls/step';
 import { styled } from '@mui/system';
 import { useState,useEffect } from 'react';
+import { addDoc, collection,setDoc,doc } from "firebase/firestore";
+import { auth,db } from "../../../firebase/firebase";
+import Link from 'next/link';
+import { async } from '@firebase/util';
 
 
 
@@ -27,10 +31,77 @@ const DivStyled = styled('div')({
   flexDirection: 'row',
   justifyContent: 'space-evenly'
 })
-export default function StepOrder() {
+export default function StepOrder(props) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
+  const [customer, setCustomer ] = useState('');
+  const [order, setOrder] = useState({});
+  const {title,body,price,category,img,id} = props;
+  const [userId, setUserId] = useState();
+  const [userData, setUserData] = useState({});
+  const [wallet, setWallet] = useState('dana');
+  const [totalPrice, setTotalPrice] = useState()
+  const [datauser, setDatuser] = useState({});
+  const handleOrderOne = () =>{
+    const user =JSON.parse(localStorage.getItem('user'));
+    const useruid = user.uid;
+    let dataOrder ={
+      uid: useruid ,
+      id: id,
+      title : title,
+      body : body,
+      price : price,
+      category : category,
+      img: 'image/galon-tiga.png',
+      id_order: new Date().getTime(),
+      total: totalPrice
+    }
+    setUserId(useruid);    
+    setOrder(dataOrder);
+  }
+ const handleOrderTwo = (dataOrder) =>{
+ 
+    let data ={...dataOrder,userData}
+    setOrder(data);
+ }
+ const handleOrderThree = (dataOrder) =>{
+    const paydata = {
+      wallet: wallet,
+      id_pay: new Date().getTime(),
+      status: 'pending'
+    }
+    let data = {...dataOrder,paydata};
+    const date = new Date().getTime();
+    const id = date.toString();
+    return handlePostData(id,data);
+ }
+ const handlePostData = async (id,data) =>{
+  try {
+      const res =  await setDoc(doc(db, "orders",id), {
+          ...data
+      })
+      console.log("berhasil menambahkan collection");
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+}
+  const getUserData = () =>{
+    const userdata = JSON.parse(localStorage.getItem('userdata'));
+    let userData = {
+        username: userdata.username,
+        password: userdata.password,
+        email: userdata.email,
+        adress: userdata.adress,
+        phone: userdata.phone,
+        customer: customer
+    }
+    setUserData(userData);
+    return setDatuser(userData);
+}
 
+  useEffect(()=>{
+    getUserData();
+  },[customer,order,wallet])
   const totalSteps = () => {
     return steps.length;
   };
@@ -66,19 +137,31 @@ export default function StepOrder() {
   };
   const handleStepBox = (step) =>{
       if(step === 0){
-          return <StepTwo/>
+          return <StepTwo title={title} price={price} category={category} setTotalPrice={setTotalPrice}/>
       }
       if(step === 1){
-        return <StepOne/>
+        return <StepOne setCustomer={setCustomer} userdata={datauser} phone={datauser.phone} adress={datauser.adress} email={datauser.email}/>
       }
       if(step === 2){
-      return <StepThree/>
+      return <StepThree setWallet={setWallet} price={totalPrice}/>
       }
   }
   const handleComplete = () => {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
+    if(activeStep === 0){
+      console.log('step 1 complete');
+      handleOrderOne();
+    }
+    if(activeStep === 1){
+      console.log('step 2 complete');
+      handleOrderTwo(order);
+    }
+    if(activeStep === 2){
+      console.log('step 3 complete')
+      handleOrderThree(order);
+    }
     handleNext();
   };
 
@@ -105,13 +188,16 @@ export default function StepOrder() {
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 ,justifyContent:'center'}}>
              <StepDone/>
             </Box>
-            <Button sx={{ mr: 1 }}>
+            <Link href={'/profile#order'}>
+              <Button sx={{ mr: 1 }}>
                 Lihat Pesanan
               </Button>
+            </Link>
+              
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Box width={450} height={400} sx={{ display: 'flex', justifyContent: 'center', flexDirection:'column', alignItems: 'center'}}>
+            <Box  sx={{width: {xs: '100%', md: 450}, height: {xs: 500, md: 400}, display: 'flex', justifyContent: 'center', flexDirection:'column', alignItems: 'center'}}>
                 
                 {
                     handleStepBox(activeStep)
@@ -127,9 +213,7 @@ export default function StepOrder() {
                 Back
               </Button>
               <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleNext} sx={{ mr: 1 }}>
-                Next
-              </Button>
+              
               {activeStep !== steps.length &&
                 (completed[activeStep] ? (
                   <Typography variant="caption" sx={{ display: 'inline-block' }}>
